@@ -1,4 +1,4 @@
-package com.desafio.agenda.model;
+package com.desafio.agenda.user;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.IdGeneratorType;
@@ -8,10 +8,11 @@ import org.hibernate.annotations.IdGeneratorType;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String name;
-    String email;
-    String password;
+    private Long id;
+    private String name;
+    @Column(unique=true)
+    private String email;
+    private String password;
 
     public User() { };
 
