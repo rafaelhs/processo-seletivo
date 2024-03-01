@@ -26,4 +26,8 @@ export class ContactService {
   update(contact: Contact) {
     return this.http.post(url + '/contact/update', contact);
   }
+
+  removeContact(id: String) {
+    return this.http.delete(url + '/' + id);
+  }
 }
