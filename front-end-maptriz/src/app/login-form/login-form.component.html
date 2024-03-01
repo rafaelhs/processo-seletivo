@@ -1,0 +1,29 @@
+<div class="container text-center col-4">
+  <form>
+    <h3 class="form-group title">Login</h3>
+    <div class="form-group row">
+      <input type="email" class="form-control" placeholder="Email" name="email"
+      [(ngModel)]="email"/>
+    </div>
+    <div class="form-group row" *ngIf="state">
+      <input type="name" class="form-control" placeholder="Name" name="name"
+      [(ngModel)]="name"/>
+    </div>
+    <div class="form-group row">
+      <input type="password" class="form-control" placeholder="Senha" name="password" 
+        [(ngModel)]="password"/>
+    </div>
+    <div class="form-group row" *ngIf="state">
+      <input type="password" class="form-control" placeholder="confirm" name="confirm" 
+        [(ngModel)]="confirm"/>
+    </div>
+    <div class="form-group row">
+      <button type="button" class="btn btn-primary" type="submit" (click)="handleSubmit()">
+        {{state ? "Registrar" : "Entrar"}}
+      </button>
+      <a type="button" class="btn btn-link" (click)="toggleState()" role="button">
+        {{state ? "Voltar" : "Criar Conta"}}
+      </a>
+    </div>
+    </form>
+</div>
