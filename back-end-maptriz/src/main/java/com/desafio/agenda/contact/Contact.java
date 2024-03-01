@@ -40,7 +40,7 @@ public class Contact {
                    String state,
                    int zip,
                    User user,
-                   Local dateCreated) {
+                   LocalDate dateCreated) {
         this.name = name;
         this.lastName = lastName;
         this.document = document;
