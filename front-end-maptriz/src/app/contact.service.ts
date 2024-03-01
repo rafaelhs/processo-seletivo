@@ -28,6 +28,6 @@ export class ContactService {
   }
 
   removeContact(id: String) {
-    return this.http.delete(url + '/' + id);
+    return this.http.delete(url + '/contact/' + id);
   }
 }

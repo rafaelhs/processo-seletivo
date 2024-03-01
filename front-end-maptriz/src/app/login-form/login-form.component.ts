@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { User } from 'src/shared/models/user';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '../local-storage.service';
 
 @Component({
   selector: 'login-form',
@@ -10,7 +11,10 @@ import { Router } from '@angular/router';
 })
 export class LoginFormComponent implements OnInit {
   
-  constructor(private services: UserService, private router: Router) { }
+  constructor(
+    private services: UserService, 
+    private router: Router,
+    private storageServices: LocalStorageService) { }
   
   ngOnInit(): void {
   }
@@ -24,12 +28,13 @@ export class LoginFormComponent implements OnInit {
     let user: User = new User(null, this.name, this.email, this.password, null);
     if(!this.state) {
       this.services.login(user).subscribe((data: any) => {
-        console.log(data);
-        this.router.navigate(['contacts', data.id]);
+        this.storageServices.setItem('userId', data.id);
+        this.router.navigate(['contacts']);
       });
     } else {
       this.services.saveUser(user).subscribe((data: any) => {
-        console.log(data);
+        console.log(data)
+        this.storageServices.setItem('userId', data.id);
         this.router.navigate(['contacts'])
       })
     }

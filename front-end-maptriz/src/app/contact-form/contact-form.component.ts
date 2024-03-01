@@ -38,8 +38,9 @@ export class ContactFormComponent implements OnInit {
 
   handleRemove() {
     if(this.deleteState) {
-      this.services.removeContact(this.contact.id);
-      this.router.navigate(['contacts']);
+      this.services.removeContact(this.contact.id).subscribe(() => {
+        this.router.navigate(['contacts']);
+      });
     } else {
       this.deleteState = !this.deleteState;
     }
@@ -50,8 +51,9 @@ export class ContactFormComponent implements OnInit {
   }
 
   handleSave() {
-    this.services.update(this.contact);
-    this.router.navigate(['contacts']);
+    this.services.update(this.contact).subscribe(() => {
+      this.router.navigate(['contacts']);
+    });
   }
 
 }
