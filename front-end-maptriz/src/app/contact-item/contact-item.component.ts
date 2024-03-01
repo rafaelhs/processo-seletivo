@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ContactService } from '../contact.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'contact-item',
@@ -10,7 +12,7 @@ export class ContactItemComponent implements OnInit {
   @Output() contactChange = new EventEmitter<any>();
 
   
-  constructor() { }
+  constructor(private router: Router) { }
   
   ngOnInit(): void {
   }
@@ -20,5 +22,8 @@ export class ContactItemComponent implements OnInit {
     this.contactChange.emit(this.contact);
   }
 
+  handleClick() {
+    this.router.navigate(['contact', this.contact.id]);
+  }
 
 }

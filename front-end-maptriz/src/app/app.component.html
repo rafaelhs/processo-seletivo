@@ -23,10 +23,29 @@
   ></add-contact-form>
 
 -->
+
+<!--
+
   <login-form></login-form>
 </div>
 
 
+<contact-item
+[(contact)]="contact"
+></contact-item>
+
+<contact-list
+[(contactList)]="contactList"
+></contact-list>
+
+
+<contact-form
+[(contact)]="contact"
+></contact-form>
+-->
 
 <router-outlet></router-outlet>
 
+<a routerLink="contact">contact</a>
+<a routerLink="login">login</a>
+</div>

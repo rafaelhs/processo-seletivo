@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { User } from 'src/shared/models/user';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login-form',
@@ -9,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class LoginFormComponent implements OnInit {
   
-  constructor(private services: UserService) { }
+  constructor(private services: UserService, private router: Router) { }
   
   ngOnInit(): void {
   }
@@ -24,10 +25,12 @@ export class LoginFormComponent implements OnInit {
     if(!this.state) {
       this.services.login(user).subscribe((data: any) => {
         console.log(data);
+        this.router.navigate(['contacts', data.id]);
       });
     } else {
       this.services.saveUser(user).subscribe((data: any) => {
         console.log(data);
+        this.router.navigate(['contacts'])
       })
     }
   }
