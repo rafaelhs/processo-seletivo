@@ -2,6 +2,7 @@ package com.desafio.agenda.contact;
 
 import com.desafio.agenda.user.User;
 import jakarta.persistence.*;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 
@@ -25,6 +26,7 @@ public class Contact {
     @JoinColumn(name = "user_id")
     private User user;
 
+    private LocalDate dateCreated;
     public Contact() {};
 
     public Contact(String name,
@@ -37,7 +39,8 @@ public class Contact {
                    String city,
                    String state,
                    int zip,
-                   User user) {
+                   User user,
+                   Local dateCreated) {
         this.name = name;
         this.lastName = lastName;
         this.document = document;
@@ -49,6 +52,7 @@ public class Contact {
         this.state = state;
         this.zip = zip;
         this.user = user;
+        this.dateCreated = dateCreated;
     }
 
     public Long getId() {
@@ -146,4 +150,13 @@ public class Contact {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public LocalDate getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(LocalDate dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
 }
