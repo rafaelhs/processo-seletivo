@@ -1,72 +1,71 @@
-<div class="card text-center col-8">
-  
-  <div class="form-group remove">
-    <button class="btn btn-danger">remove</button>
-  </div>
-
-
-  <div class="form-group title">
-    <input type="text" class="form-control form-control-sm" placeholder="Name" name="name"
-      [(ngModel)]="contact.name"/>
-    <input type="text" class="form-control form-control-sm" placeholder="LastName" name="lastName"
-      [(ngModel)]="contact.lastName"/>
-  </div>
-  
-
-  <div class="form-group contact">
-    <div class="input-group">
-      <label>email</label>
-      <input type="email" class="form-control form-control-sm" placeholder="Email" name="email"
-        [(ngModel)]="contact.email"/>
+<div class="container text-center col-8" >  
+    <div class="form-group title">
+      <input type="text" class="form-control form-control-sm" placeholder="Name" name="name"
+        [(ngModel)]="contact.name" 
+        />
+      <input type="text" class="form-control form-control-sm " placeholder="LastName" name="lastName"
+        [(ngModel)]="contact.lastName"/>
     </div>
-    <div class="input-group">
-      <label>phone</label>
-      <input type="text" class="form-control form-control-sm" placeholder="Phone" name="phone"  
-        [(ngModel)]="contact.phone"/>
-    </div>
-  </div>
+    
 
-
-  <div class="form-group documents">
-    <div class="input-group">
-      <label>document</label>
-      <input type="text" class="form-control form-control-sm" placeholder="Document" name="document"
-        [(ngModel)]="contact.document"/>
-    </div>
-    <div class="input-group">
-      <label>date of birth</label>
-      <input type="date" class="form-control form-control-sm" placeholder="DateOfBirth" name="dateOfBirth"
-        [(ngModel)]="contact.dateOfBirth"/>
-    </div>
-  </div>
-
-
-  <div class="form-group address">
-    <div class="address-group-1">
+    <div class="form-group contact">
       <div class="input-group">
-        <label>address</label>
-        <input type="text" class="form-control form-control-sm" placeholder="Zip" name="zip"
-          [(ngModel)]="contact.zip"/>
-      </div>
-      <div class="input-group">    
-        <label>city</label>
-        <input type="text" class="form-control form-control-sm" placeholder="city" name="city"
-          [(ngModel)]="contact.city"/>
+        <label>email</label>
+        <input type="email" class="form-control form-control-sm" placeholder="Email" name="email"
+          [(ngModel)]="contact.email"/>
       </div>
       <div class="input-group">
-        <label>state</label>
-        <input type="text" class="form-control form-control-sm" placeholder="state" name="state"
-          [(ngModel)]="contact.state"/>
+        <label>phone</label>
+        <input type="text" class="form-control form-control-sm" placeholder="Phone" name="phone"  
+          [(ngModel)]="contact.phone"/>
       </div>
     </div>
-    <input type="text" class="form-control form-control-sm" placeholder="address" name="address"
-      [(ngModel)]="contact.address"/>
-  </div>
 
 
-  <div class="form-group control">
-    <button class="btn btn-primary">Save</button>
-    <button class="btn btn-outline-primary">return</button>
-  </div>
+    <div class="form-group documents">
+      <div class="input-group">
+        <label>document</label>
+        <input type="text" class="form-control form-control-sm" placeholder="Document" name="document"
+          [(ngModel)]="contact.document"/>
+      </div>
+      <div class="input-group">
+        <label>date of birth</label>
+        <input type="date" class="form-control form-control-sm" placeholder="DateOfBirth" name="dateOfBirth"
+          [(ngModel)]="contact.dateOfBirth"/>
+      </div>
+    </div>
 
+
+    <div class="form-group address">
+      <div class="address-group-1">
+        <div class="input-group">
+          <label>address</label>
+          <input type="text" class="form-control form-control-sm" placeholder="Zip" name="zip"
+            [(ngModel)]="contact.zip"/>
+        </div>
+        <div class="input-group">    
+          <label>city</label>
+          <input type="text" class="form-control form-control-sm" placeholder="city" name="city"
+            [(ngModel)]="contact.city"/>
+        </div>
+        <div class="input-group">
+          <label>state</label>
+          <input type="text" class="form-control form-control-sm" placeholder="state" name="state"
+            [(ngModel)]="contact.state"/>
+        </div>
+      </div>
+      <input type="text" class="form-control form-control-sm" placeholder="address" name="address"
+        [(ngModel)]="contact.address"/>
+    </div>
+
+    <div class="form-group control">
+      <button class="btn  remove-btn" (click)="handleRemove()"
+        [ngClass]="deleteState ? 'btn-danger':'btn-outline-danger'"
+      >
+        {{deleteState ? 'Confirmar remoção':'Remover'}}
+      </button>
+      <button class="btn btn-outline-primary cancel-button" (click)="handleReturn()">return</button>
+      <button class="btn btn-primary confirm-button" (click)="handleSave()">Save</button>
+    </div>
+  
 </div>
