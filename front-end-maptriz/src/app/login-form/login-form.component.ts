@@ -25,7 +25,7 @@ export class LoginFormComponent implements OnInit {
   confirm: string = "";
 
   handleSubmit() {
-    let user: User = new User(null, this.name, this.email, this.password, null);
+    let user: User = new User(null, this.name, this.email, this.password);
     if(!this.state) {
       this.services.login(user).subscribe((data: any) => {
         this.storageServices.setItem('userId', data.id);
@@ -33,7 +33,6 @@ export class LoginFormComponent implements OnInit {
       });
     } else {
       this.services.saveUser(user).subscribe((data: any) => {
-        console.log(data)
         this.storageServices.setItem('userId', data.id);
         this.router.navigate(['contacts'])
       })

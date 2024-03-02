@@ -1,5 +1,22 @@
 <div class="container">
-  <div class="column justify-content-center">
+  <div class="control-group">
+    <div>
+      <button class="btn btn-sm btn-primary" type="button" (click)="handleAdd()">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+
+    </div>
+    <form class="form search-container" role="search">
+      <input class="form-control form-control-sm me-2" type="search" placeholder="Pesquisar" aria-label="Search" [(ngModel)]="query" name="query">
+      <button class="btn btn-sm btn-outline-success" type="submit" (click)="handleSearch()">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </button>
+    </form>
+  </div>
+  
+
+
+  <div class="column contact-list">
     <div class="contact-item" *ngFor="let contactItem of contactList; let i = index">
       <contact-item
         [(contact)]="contactList[i]"

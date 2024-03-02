@@ -9,6 +9,7 @@ const routes: Routes = [
   {path: 'login', component: LoginFormComponent},
   {path: 'contacts', component: ContactListComponent},
   {path: 'contact/:id', component: ContactFormComponent},
+  {path: 'contact', component: ContactFormComponent},
   {path: '', component: LoginFormComponent},
   {path: '**', component: NotFoundComponent}
 ];

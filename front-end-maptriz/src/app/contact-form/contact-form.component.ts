@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ContactService } from '../contact.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Contact } from 'src/shared/models/contact';
+import { LocalStorageService } from '../local-storage.service';
+import { User } from 'src/shared/models/user';
 
 @Component({
   selector: 'contact-form',
@@ -13,20 +15,27 @@ export class ContactFormComponent implements OnInit {
   @Output() contactChange = new EventEmitter<any>();
 
   deleteState: boolean = false;
-  //0 add
-  //1 edit
-  //2 read
-  
-  constructor(private services: ContactService, private route: ActivatedRoute, private router: Router) { }
+
+  constructor(
+    private services: ContactService, 
+    private route: ActivatedRoute, 
+    private router: Router,
+    private storageServices: LocalStorageService
+    ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
+      let userId = this.storageServices.getItem('userId');
+      if(!userId) this.router.navigate(['login']);
+
       let id = params.get('id');
       if(id) {
         this.services.getContact(id).subscribe((contact: any) => {
           this.contact = contact;
-          console.log(this.contact)
         })
+      } else {
+        let user = new User(Number(userId), null, null, null);
+        this.contact = new Contact(null, "", null, "", null, null, null, null, null, null, null, null, user)
       }
     })
   }
