@@ -1,29 +1,63 @@
 <div class="container text-center col-4">
-  <form>
-    <h3 class="form-group title">Login</h3>
+  <form class="form"
+  [formGroup]="loginForm"
+  (ngSubmit)="handleSubmit()"
+>
+    <h3 class="form-group title">{{isSignUp ? "Registrar" : "Login"}}</h3>
+
+    <div *ngIf="loginError">
+      <small class="text-danger">{{ loginError }}</small>
+    </div>
+
     <div class="form-group row">
       <input type="email" class="form-control" placeholder="Email" name="email"
-      [(ngModel)]="email"/>
+      formControlName="email"
+      />
+      <div *ngIf="emailValidation()">
+        <small class="text-danger">{{ emailValidation() }}</small>
+      </div>
     </div>
-    <div class="form-group row" *ngIf="state">
-      <input type="name" class="form-control" placeholder="Name" name="name"
-      [(ngModel)]="name"/>
+
+
+    <div class="form-group row" *ngIf="isSignUp">
+      <input type="name" class="form-control" placeholder="Nome" name="name"
+      formControlName="name"/>
+      <div *ngIf="genericValidation('name')">
+        <small class="text-danger">{{genericValidation('name') }}</small>
+      </div>
     </div>
+
+
     <div class="form-group row">
       <input type="password" class="form-control" placeholder="Senha" name="password" 
-        [(ngModel)]="password"/>
+      formControlName="password"/>
+      <div *ngIf="genericValidation('password')">
+        <small class="text-danger">{{genericValidation('password') }}</small>
+      </div>
     </div>
-    <div class="form-group row" *ngIf="state">
-      <input type="password" class="form-control" placeholder="confirm" name="confirm" 
-        [(ngModel)]="confirm"/>
+
+<!--
+  <div class="form-group row" *ngIf="isSignUp">
+    <fieldset></fieldset>
+    <input type="password" class="form-control" placeholder="Confirme sua senha" name="confirm" 
+    formControlName="confirm"/>
+    <div *ngIf="passwordValidation()">
+      <small class="text-danger">{{passwordValidation() }}</small>
     </div>
+  </div>
+
+-->
+
+
     <div class="form-group row">
-      <button type="button" class="btn btn-primary" type="submit" (click)="handleSubmit()">
-        {{state ? "Registrar" : "Entrar"}}
+      <button type="button" class="btn btn-primary" type="submit"
+        [attr.disabled]="loginForm.invalid ? 'true' : null"
+      >
+        {{isSignUp ? "Registrar" : "Entrar"}}
       </button>
       <a type="button" class="btn btn-link" (click)="toggleState()" role="button">
-        {{state ? "Voltar" : "Criar Conta"}}
+        {{isSignUp ? "Voltar" : "Criar Conta"}}
       </a>
     </div>
-    </form>
+  </form>
 </div>
