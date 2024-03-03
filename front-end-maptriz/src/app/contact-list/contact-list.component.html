@@ -14,9 +14,9 @@
         </button>
       </form>
       <div class="toggles">
-        <a class="toggle-link" [ngClass]="searchToggle === 'dateCreated' ? 'toggled' : 'untoggled'" (click)="handleSearchToggle('dateCreated')" [routerLink]="">
-          <i class="fa fa-arrow-down" aria-hidden="true" *ngIf="orderToggle === 'DESC' && searchToggle === 'dateCreated'"></i>
-          <i class="fa fa-arrow-up" aria-hidden="true" *ngIf="orderToggle === 'ASC' && searchToggle === 'dateCreated'"></i>
+        <a class="toggle-link" [ngClass]="searchToggle === 'createdAt' ? 'toggled' : 'untoggled'" (click)="handleSearchToggle('createdAt')" [routerLink]="">
+          <i class="fa fa-arrow-down" aria-hidden="true" *ngIf="orderToggle === 'DESC' && searchToggle === 'createdAt'"></i>
+          <i class="fa fa-arrow-up" aria-hidden="true" *ngIf="orderToggle === 'ASC' && searchToggle === 'createdAt'"></i>
           data
         </a>
         <a  class="toggle-link" [ngClass]="searchToggle === 'name' ? 'toggled' : 'untoggled'" (click)="handleSearchToggle('name')" [routerLink]="">

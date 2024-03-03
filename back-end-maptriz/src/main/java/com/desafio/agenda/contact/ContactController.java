@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,7 +36,7 @@ public class ContactController {
 
     @PostMapping("/create")
     public ResponseEntity<Contact> createContact(@RequestBody Contact contact) {
-        contact.setDateCreated(LocalDate.now());
+        contact.setCreatedAt(LocalDateTime.now());
         return ResponseEntity.ok().body(contactRepository.save(contact));
     }
 
@@ -53,7 +54,7 @@ public class ContactController {
     public ResponseEntity<Page<Contact>> queryContact(
             @PathVariable("id") Long id,
             @RequestParam(required = false, defaultValue = "") String search,
-            @RequestParam(required = false, defaultValue = "dateCreated") String variable,
+            @RequestParam(required = false, defaultValue = "createdAt") String variable,
             @RequestParam(required = false, defaultValue = "ASC") String order
     ){
         Pageable page = PageRequest.of(

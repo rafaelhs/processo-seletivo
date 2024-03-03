@@ -14,7 +14,7 @@ export class ContactListComponent implements OnInit {
   @Output() contactListChange = new EventEmitter<any[]>();
 
   query: string = "";
-  searchToggle: string = "dateCreated";
+  searchToggle: string = "createdAt";
   orderToggle: string = "ASC";
 
   constructor(
@@ -64,10 +64,10 @@ export class ContactListComponent implements OnInit {
   }
 
   switchSearchToggle() {
-    if(this.searchToggle === "dateCreated") {
+    if(this.searchToggle === "createdAt") {
       this.searchToggle = "name";
     } else {
-      this.searchToggle = "dateCreated";
+      this.searchToggle = "createdAt";
     }
     this.orderToggle = "ASC";
   }

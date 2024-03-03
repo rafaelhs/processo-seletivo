@@ -13,7 +13,7 @@ export class Contact {
       public state: string | null,
       public document: number | null,
       public dateOfBirth: string | null,
-      public dateCreated: string | null,
+      public createdAt: string | null,
       public user: User | null
       ) {
 
