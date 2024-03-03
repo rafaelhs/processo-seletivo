@@ -1,6 +1,6 @@
 package com.desafio.agenda.contact;
 
-import com.desafio.agenda.EmailService;
+import com.desafio.agenda.Services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

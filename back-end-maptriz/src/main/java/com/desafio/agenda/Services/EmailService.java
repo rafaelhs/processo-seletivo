@@ -1,4 +1,4 @@
-package com.desafio.agenda;
+package com.desafio.agenda.Services;
 
 import com.desafio.agenda.contact.Contact;
 import org.springframework.web.client.RestTemplate;
