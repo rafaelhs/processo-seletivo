@@ -1,9 +1,15 @@
 package com.desafio.agenda.contact;
 
+import jakarta.persistence.criteria.Order;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +35,7 @@ public class ContactController {
 
     @PostMapping("/create")
     public ResponseEntity<Contact> createContact(@RequestBody Contact contact) {
+        contact.setDateCreated(LocalDate.now());
         return ResponseEntity.ok().body(contactRepository.save(contact));
     }
 
@@ -42,6 +49,19 @@ public class ContactController {
         List<Contact> contacts = contactRepository.findAllByUserId(id);
         return ResponseEntity.ok().body(contacts);
     }
+    @GetMapping(path = "/search/{id}")
+    public ResponseEntity<Page<Contact>> queryContact(
+            @PathVariable("id") Long id,
+            @RequestParam(required = false, defaultValue = "") String search,
+            @RequestParam(required = false, defaultValue = "dateCreated") String variable,
+            @RequestParam(required = false, defaultValue = "ASC") String order
+    ){
+        Pageable page = PageRequest.of(
+                0, Integer.MAX_VALUE,
+                Sort.by(order.equals("ASC") ? Sort.Direction.ASC : Sort.Direction.DESC,
+                        variable));
+        return ResponseEntity.ok().body(contactRepository.findSearch(id, search, page));
+    }
 
     @DeleteMapping(path = "{id}")
     public ResponseEntity<?> removeContact(@PathVariable("id") Long id) {
@@ -52,5 +72,7 @@ public class ContactController {
         }
         return ResponseEntity.badRequest().body(id);
     }
+
+
 
 }
