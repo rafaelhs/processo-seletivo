@@ -1,10 +1,12 @@
 package com.desafio.agenda.contact;
 
+import com.desafio.agenda.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +37,13 @@ public class ContactController {
     @PostMapping("/create")
     public ResponseEntity<Contact> createContact(@RequestBody Contact contact) {
         contact.setCreatedAt(LocalDateTime.now());
-        return ResponseEntity.ok().body(contactRepository.save(contact));
+        try{
+            Contact res = contactRepository.save(contact);
+            EmailService.senMail(contact);
+            return ResponseEntity.ok().body(contactRepository.save(res));
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body(null);
+        }
     }
 
     @PostMapping("/update")
