@@ -60,7 +60,7 @@ export class ContactFormComponent implements OnInit {
   }
 
   handleSave() {
-    this.services.update(this.contact).subscribe(() => {
+    this.services.createContact(this.contact).subscribe(() => {
       this.router.navigate(['contacts']);
     });
   }
