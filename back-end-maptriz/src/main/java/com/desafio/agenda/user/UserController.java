@@ -3,9 +3,11 @@ package com.desafio.agenda.user;
 import com.desafio.agenda.user.User;
 import com.desafio.agenda.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -28,11 +30,11 @@ public class UserController {
 
     @PostMapping("/create")
     public ResponseEntity<User> createUser(@RequestBody User user) {
-        try {
+        Optional<User> userAux = userRepository.findOneByEmail(user.getPassword());
+        if(userAux.isEmpty()) {
             return ResponseEntity.ok().body(userRepository.save(user));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(user);
         }
+        throw new ResponseStatusException(HttpStatus.CONFLICT);
     }
 
     @PostMapping
@@ -41,7 +43,7 @@ public class UserController {
         if(userAux.isPresent()) {
             return ResponseEntity.ok().body(userAux.get());
         }
-        return ResponseEntity.badRequest().body(null);
+        throw new ResponseStatusException(HttpStatus.FORBIDDEN, "wrong credentials");
     }
 
     @DeleteMapping(path = "{id}")
