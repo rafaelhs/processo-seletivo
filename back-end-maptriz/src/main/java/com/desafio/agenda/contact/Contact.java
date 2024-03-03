@@ -18,9 +18,6 @@ public class Contact {
     private LocalDate dateOfBirth;
     private String email;
     private int phone;
-    private String address;
-    private String city;
-    private String state;
     private int zip;
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -35,9 +32,6 @@ public class Contact {
                    LocalDate dateOfBirth,
                    String email,
                    int phone,
-                   String address,
-                   String city,
-                   String state,
                    int zip,
                    User user,
                    LocalDateTime createdAt) {
@@ -47,9 +41,6 @@ public class Contact {
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.phone = phone;
-        this.address = address;
-        this.city = city;
-        this.state = state;
         this.zip = zip;
         this.user = user;
         this.createdAt = createdAt;
@@ -109,30 +100,6 @@ public class Contact {
 
     public void setPhone(int phone) {
         this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
     }
 
     public int getZip() {

@@ -22,8 +22,6 @@ public interface ContactRepository extends JpaRepository<Contact, Long>{
             "cast(c.document as string) like lower(concat('%', :search, '%')) or " +
             "lower(c.email) like lower(concat('%', :search, '%')) or " +
             "cast(c.phone as string) like lower(concat('%', :search, '%')) or " +
-            "lower(c.address) like lower(concat('%', :search, '%')) or " +
-            "lower(c.city) like lower(concat('%', :search, '%')) or " +
             "cast(c.zip as string) like lower(concat('%', :search, '%'))" +
             ")")
     public Page<Contact> findSearch(@Param("userId") Long userId, @Param("search") String search, Pageable pageable);

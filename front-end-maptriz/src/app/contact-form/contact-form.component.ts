@@ -11,7 +11,7 @@ import { User } from 'src/shared/models/user';
   styleUrls: ['./contact-form.component.scss']
 })
 export class ContactFormComponent implements OnInit {
-  contact: any = new Contact(null, "", null, "", null, null, null, null, null, null, null, null, null);
+  contact: any = new Contact(null, "", null, "", null, null, null, null, null, null);
 
   deleteState: boolean = false;
 
@@ -34,7 +34,7 @@ export class ContactFormComponent implements OnInit {
         })
       } else {
         let user = new User(Number(userId), null, null, null);
-        this.contact = new Contact(null, "", null, "", null, null, null, null, null, null, null, null, user)
+        this.contact = new Contact(null, "", null, "", null, null, null, null, null, user)
       }
     })
   }
