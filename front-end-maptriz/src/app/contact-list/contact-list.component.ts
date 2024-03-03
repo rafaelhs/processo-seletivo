@@ -14,7 +14,7 @@ export class ContactListComponent implements OnInit {
   @Output() contactListChange = new EventEmitter<any[]>();
 
   query: string = "";
-  searchToggle: string = "createdAt";
+  searchToggle: string = "name";
   orderToggle: string = "ASC";
 
   constructor(
