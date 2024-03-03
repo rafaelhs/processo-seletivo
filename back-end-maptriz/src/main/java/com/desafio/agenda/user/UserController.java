@@ -30,11 +30,11 @@ public class UserController {
 
     @PostMapping("/create")
     public ResponseEntity<User> createUser(@RequestBody User user) {
-        Optional<User> userAux = userRepository.findOneByEmail(user.getPassword());
+        Optional<User> userAux = userRepository.findOneByEmail(user.getEmail());
         if(userAux.isEmpty()) {
             return ResponseEntity.ok().body(userRepository.save(user));
         }
-        throw new ResponseStatusException(HttpStatus.CONFLICT);
+        throw new ResponseStatusException(HttpStatus.CONFLICT, "email in use");
     }
 
     @PostMapping

@@ -40,10 +40,16 @@ export class LoginFormComponent implements OnInit {
       this.loginForm.get('password')?.value);
 
     if(this.isSignUp) {
-      this.services.saveUser(user).subscribe((data: any) => {
-        this.storageServices.setItem('userId', data.id);
-        this.storageServices.setItem('userName', data.name)
-        this.router.navigate(['contacts'])
+      this.services.saveUser(user).subscribe({ 
+        next: (data: any) => {
+          this.storageServices.setItem('userId', data.id);
+          this.router.navigate(['contacts'])
+        },
+        error: error => {
+          if(error.status === 409) {
+            this.loginError = "Email em uso"
+          }
+        }   
       })
     } else {
       this.services.login(user).subscribe({
