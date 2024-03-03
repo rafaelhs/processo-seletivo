@@ -19,10 +19,10 @@ public interface ContactRepository extends JpaRepository<Contact, Long>{
     @Query("select c from Contact c where c.user.id = :userId and (" +
             "lower(c.name) like lower(concat('%', :search, '%')) or " +
             "lower(c.lastName) like lower(concat('%', :search, '%')) or " +
-            "cast(c.document as string) like lower(concat('%', :search, '%')) or " +
+            "lower(c.document) like lower(concat('%', :search, '%')) or " +
             "lower(c.email) like lower(concat('%', :search, '%')) or " +
-            "cast(c.phone as string) like lower(concat('%', :search, '%')) or " +
-            "cast(c.zip as string) like lower(concat('%', :search, '%'))" +
+            "lower(c.phone) like lower(concat('%', :search, '%')) or " +
+            "lower(c.zip) like lower(concat('%', :search, '%'))" +
             ")")
     public Page<Contact> findSearch(@Param("userId") Long userId, @Param("search") String search, Pageable pageable);
 }

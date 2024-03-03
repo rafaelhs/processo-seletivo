@@ -14,11 +14,11 @@ public class Contact {
     private Long id;
     private String name;
     private String lastName;
-    private int document;
+    private String document;
     private LocalDate dateOfBirth;
     private String email;
-    private int phone;
-    private int zip;
+    private String phone;
+    private String zip;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -28,11 +28,11 @@ public class Contact {
 
     public Contact(String name,
                    String lastName,
-                   int document,
+                   String document,
                    LocalDate dateOfBirth,
                    String email,
-                   int phone,
-                   int zip,
+                   String phone,
+                   String zip,
                    User user,
                    LocalDateTime createdAt) {
         this.name = name;
@@ -70,11 +70,11 @@ public class Contact {
         this.lastName = lastName;
     }
 
-    public int getDocument() {
+    public String getDocument() {
         return document;
     }
 
-    public void setDocument(int document) {
+    public void setDocument(String document) {
         this.document = document;
     }
 
@@ -94,19 +94,19 @@ public class Contact {
         this.email = email;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public int getZip() {
+    public String getZip() {
         return zip;
     }
 
-    public void setZip(int zip) {
+    public void setZip(String zip) {
         this.zip = zip;
     }
 
