@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Contact } from 'src/shared/models/contact';
+import { environment } from 'src/environments/environment';
 
-const url: string = "http://localhost:8080"
+const url: string = environment.baseUrl;
 
 @Injectable({
   providedIn: 'root'
