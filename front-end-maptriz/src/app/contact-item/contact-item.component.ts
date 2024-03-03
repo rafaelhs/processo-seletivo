@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ContactService } from '../contact.service';
 import { Router } from '@angular/router';
 
 @Component({
