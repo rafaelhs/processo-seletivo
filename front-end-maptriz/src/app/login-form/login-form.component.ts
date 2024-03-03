@@ -52,7 +52,7 @@ export class LoginFormComponent implements OnInit {
         this.router.navigate(['contacts']);
         },
         error: error => {
-          if(error.status === 400) {
+          if(error.status === 403) {
             this.loginError = "Usuário ou senha inválidos"
           }
         }

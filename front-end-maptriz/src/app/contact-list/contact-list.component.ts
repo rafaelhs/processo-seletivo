@@ -1,9 +1,8 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Contact } from 'src/shared/models/contact';
 import { ContactService } from '../contact.service';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { LocalStorageService } from '../local-storage.service';
-import { User } from 'src/shared/models/user';
 
 @Component({
   selector: 'contact-list',
@@ -15,7 +14,8 @@ export class ContactListComponent implements OnInit {
   @Output() contactListChange = new EventEmitter<any[]>();
 
   query: string = "";
-
+  searchToggle: string = "dateCreated";
+  orderToggle: string = "ASC";
 
   constructor(
     private services: ContactService, 
@@ -24,9 +24,11 @@ export class ContactListComponent implements OnInit {
       let userId = this.storageServices.getItem('userId');
       
       if(userId) {
-        this.services.getContacts(userId).subscribe((contacts: any) => {
-          this.contactList = contacts;
+        this.services.searchContacts(userId, "", "name", "ASC").subscribe((contacts: any) => {
+          this.contactList = contacts.content;
         });
+      } else {
+        this.router.navigate(['login']);
       }
     }
 
@@ -44,8 +46,37 @@ export class ContactListComponent implements OnInit {
   }
 
   handleSearch() {
-    console.log(this.query);
+    let userId = this.storageServices.getItem('userId');
+    if(userId) {
+      this.services.searchContacts(userId, this.query, this.searchToggle, this.orderToggle).subscribe((contacts: any) => {
+        this.contactList = contacts.content;
+      });
+    }
   }
 
+  handleSearchToggle(variable: string) {
+    if(this.searchToggle != variable) {
+      this.switchSearchToggle();
+    } else {
+      this.switchOderToggle();
+    }
+    this.handleSearch()
+  }
 
+  switchSearchToggle() {
+    if(this.searchToggle === "dateCreated") {
+      this.searchToggle = "name";
+    } else {
+      this.searchToggle = "dateCreated";
+    }
+    this.orderToggle = "ASC";
+  }
+
+  switchOderToggle() {
+    if(this.orderToggle === "ASC") {
+      this.orderToggle = "DESC";
+    } else {
+      this.orderToggle = "ASC";
+    }
+  }
 }

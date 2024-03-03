@@ -28,7 +28,14 @@ export class ContactService {
     return this.http.post(url + '/contact/update', contact);
   }
 
-  removeContact(id: String) {
+  removeContact(id: string) {
     return this.http.delete(url + '/contact/' + id);
+  }
+
+  searchContacts(id: String, search: string, variable: string, order: string) {
+    return this.http.get(
+      url + '/contact/search/' + id, 
+      { params: { search, variable, order } 
+      });
   }
 }

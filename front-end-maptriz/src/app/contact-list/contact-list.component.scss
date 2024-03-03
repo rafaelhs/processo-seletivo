@@ -29,3 +29,31 @@
   justify-content: space-between;
   align-self: stretch;
 }
+
+.toggle-link {
+  font-size: small;
+  width: 75px
+}
+
+.toggled {
+  font-weight:600;
+}
+
+.untoggled{
+  color: gray;
+  text-decoration: none;
+}
+
+.right-control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: end;
+
+}
+
+.toggles {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}

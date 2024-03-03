@@ -4,14 +4,30 @@
       <button class="btn btn-sm btn-primary" type="button" (click)="handleAdd()">
         <i class="fa fa-plus" aria-hidden="true"></i>
       </button>
+    </div>
+    
+    <div class="right-control">
+      <form class="form search-container" role="search">
+        <input class="form-control form-control-sm me-2" type="search" placeholder="Pesquisar" aria-label="Search" [(ngModel)]="query" name="query">
+        <button class="btn btn-sm btn-outline-success" type="submit" (click)="handleSearch()">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </form>
+      <div class="toggles">
+        <a class="toggle-link" [ngClass]="searchToggle === 'dateCreated' ? 'toggled' : 'untoggled'" (click)="handleSearchToggle('dateCreated')" [routerLink]="">
+          <i class="fa fa-arrow-down" aria-hidden="true" *ngIf="orderToggle === 'DESC' && searchToggle === 'dateCreated'"></i>
+          <i class="fa fa-arrow-up" aria-hidden="true" *ngIf="orderToggle === 'ASC' && searchToggle === 'dateCreated'"></i>
+          data
+        </a>
+        <a  class="toggle-link" [ngClass]="searchToggle === 'name' ? 'toggled' : 'untoggled'" (click)="handleSearchToggle('name')" [routerLink]="">
+          <i class="fa fa-arrow-down" aria-hidden="true" *ngIf="orderToggle === 'DESC' && searchToggle === 'name'"></i>
+          <i class="fa fa-arrow-up" aria-hidden="true" *ngIf="orderToggle === 'ASC' && searchToggle === 'name'"></i>
+          nome
+        </a>
+      </div>
 
     </div>
-    <form class="form search-container" role="search">
-      <input class="form-control form-control-sm me-2" type="search" placeholder="Pesquisar" aria-label="Search" [(ngModel)]="query" name="query">
-      <button class="btn btn-sm btn-outline-success" type="submit" (click)="handleSearch()">
-        <i class="fa fa-search" aria-hidden="true"></i>
-      </button>
-    </form>
+    
   </div>
   
 
