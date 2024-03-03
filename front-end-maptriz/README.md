@@ -1,7 +1,7 @@
 # Desafio Técnico Front-end
 
 ## Descrição
-Projeto foi desenvolvido utilizando os projetos bases apresentados pelo desafio, utilizando as mesmas tecnologias e versões originais.
+Este Projeto foi desenvolvido utilizando os projetos bases apresentados pelo desafio, utilizando as mesmas tecnologias e versões originais.
 
 ## Como Executar o Projeto Angular
 
