@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Contact } from 'src/shared/models/contact';
+import { Contact } from 'src/app/models/contact';
 import { environment } from 'src/environments/environment';
 
 const url: string = environment.baseUrl;

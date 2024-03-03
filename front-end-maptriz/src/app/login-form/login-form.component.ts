@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { User } from 'src/shared/models/user';
+import { User } from 'src/app/models/user';
 import { UserService } from '../Services/user.service';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../Services/local-storage.service';
