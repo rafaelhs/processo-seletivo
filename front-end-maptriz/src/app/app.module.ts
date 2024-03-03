@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { EventService } from 'src/shared/services/EventService';
-import { UserService } from './user.service';
+import { UserService } from './Services/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactItemComponent } from './contact-item/contact-item.component';
 import { ContactListComponent } from './contact-list/contact-list.component';

@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ContactService } from '../contact.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Contact } from 'src/shared/models/contact';
-import { LocalStorageService } from '../local-storage.service';
+import { LocalStorageService } from '../Services/local-storage.service';
+import { ContactService } from '../Services/contact.service';
 import { User } from 'src/shared/models/user';
+import { Contact } from 'src/shared/models/contact';
 
 @Component({
   selector: 'contact-form',

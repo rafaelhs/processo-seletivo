@@ -1,10 +1,9 @@
 import { Component, OnInit} from '@angular/core';
 import { User } from 'src/shared/models/user';
-import { UserService } from '../user.service';
+import { UserService } from '../Services/user.service';
 import { Router } from '@angular/router';
-import { LocalStorageService } from '../local-storage.service';
+import { LocalStorageService } from '../Services/local-storage.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ValidationService } from '../validation-service.service';
 @Component({
   selector: 'login-form',
   templateUrl: './login-form.component.html',
@@ -19,16 +18,13 @@ export class LoginFormComponent implements OnInit {
   
   ngOnInit(): void {
     this.loginForm.controls.name.disable();
-    //this.loginForm.controls.confirm.disable();
   }
 
   loginForm = new FormGroup({
     email: new FormControl("", [Validators.required, Validators.email]),
     name: new FormControl("", Validators.required),
     password: new FormControl("", Validators.required),
-    //confirm: new FormControl("", Validators.required)
   });
-
   isSignUp: boolean = false;
   loginError: string = "";
 
@@ -71,10 +67,8 @@ export class LoginFormComponent implements OnInit {
     this.loginError = "";
     if(this.isSignUp) {
       this.loginForm.controls.name.enable();
-      //this.loginForm.controls.confirm.enable();
     } else {
       this.loginForm.controls.name.disable();
-      //this.loginForm.controls.confirm.disable();
     }
   }
 
@@ -98,16 +92,4 @@ export class LoginFormComponent implements OnInit {
     }
     return false;
   }
-/*
-  passwordValidation() {
-    if(this.loginForm.get("confirm")?.invalid 
-      && (this.loginForm.get("confirm")?.touched
-      || this.loginForm.get("confirm")?.dirty
-    )) {
-      if(this.loginForm.get("confirm")?.hasError('required')) return "Campo obrigatório"
-      if(this.loginForm.get("confirm") != this.loginForm.get("password")) return "Por favor, confirme a senha"
-    }
-    return false;
-  }
-*/
 }

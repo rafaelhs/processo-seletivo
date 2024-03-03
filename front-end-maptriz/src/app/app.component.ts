@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User } from 'src/shared/models/user';
 import { EventService } from 'src/shared/services/EventService';
-import { UserService } from './user.service';
+import { UserService } from './Services/user.service';
 import { Contact } from 'src/shared/models/contact';
 
 @Component({

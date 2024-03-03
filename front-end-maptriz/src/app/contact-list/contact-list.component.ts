@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Contact } from 'src/shared/models/contact';
-import { ContactService } from '../contact.service';
+import { ContactService } from '../Services/contact.service';
 import { Router } from '@angular/router';
-import { LocalStorageService } from '../local-storage.service';
+import { LocalStorageService } from '../Services/local-storage.service';
 
 @Component({
   selector: 'contact-list',

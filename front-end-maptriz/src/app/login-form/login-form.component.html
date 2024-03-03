@@ -1,8 +1,8 @@
 <div class="container text-center col-4">
   <form class="form"
-  [formGroup]="loginForm"
-  (ngSubmit)="handleSubmit()"
->
+    [formGroup]="loginForm"
+    (ngSubmit)="handleSubmit()"
+  >
     <h3 class="form-group title">{{isSignUp ? "Registrar" : "Login"}}</h3>
 
     <div *ngIf="loginError">
@@ -35,18 +35,6 @@
         <small class="text-danger">{{genericValidation('password') }}</small>
       </div>
     </div>
-
-<!--
-  <div class="form-group row" *ngIf="isSignUp">
-    <fieldset></fieldset>
-    <input type="password" class="form-control" placeholder="Confirme sua senha" name="confirm" 
-    formControlName="confirm"/>
-    <div *ngIf="passwordValidation()">
-      <small class="text-danger">{{passwordValidation() }}</small>
-    </div>
-  </div>
-
--->
 
 
     <div class="form-group row">
